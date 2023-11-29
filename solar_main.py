@@ -50,11 +50,11 @@ def start_execution():
     """
     global perform_execution
     perform_execution = True
-    start_button['text'] = "Pause"
-    start_button['command'] = stop_execution
+    start_button["text"] = "Pause"
+    start_button["command"] = stop_execution
 
     execution()
-    print('Started execution...')
+    print("Started execution...")
 
 
 def stop_execution():
@@ -63,9 +63,9 @@ def stop_execution():
     """
     global perform_execution
     perform_execution = False
-    start_button['text'] = "Start"
-    start_button['command'] = start_execution
-    print('Paused execution.')
+    start_button["text"] = "Start"
+    start_button["command"] = start_execution
+    print("Paused execution.")
 
 
 def open_file_dialog():
@@ -84,9 +84,9 @@ def open_file_dialog():
     calculate_scale_factor(max_distance)
 
     for obj in space_objects:
-        if obj.type == 'star':
+        if obj.type == "star":
             create_star_image(space, obj)
-        elif obj.type == 'planet':
+        elif obj.type == "planet":
             create_planet_image(space, obj)
         else:
             raise AssertionError()
@@ -112,7 +112,7 @@ def main():
     global space
     global start_button
 
-    print('Modelling started!')
+    print("Modelling started!")
     physical_time = 0
 
     root = tkinter.Tk()
@@ -135,9 +135,13 @@ def main():
     scale = tkinter.Scale(frame, variable=time_speed, orient=tkinter.HORIZONTAL)
     scale.pack(side=tkinter.LEFT)
 
-    load_file_button = tkinter.Button(frame, text="Open file...", command=open_file_dialog)
+    load_file_button = tkinter.Button(
+        frame, text="Open file...", command=open_file_dialog
+    )
     load_file_button.pack(side=tkinter.LEFT)
-    save_file_button = tkinter.Button(frame, text="Save to file...", command=save_file_dialog)
+    save_file_button = tkinter.Button(
+        frame, text="Save to file...", command=save_file_dialog
+    )
     save_file_button.pack(side=tkinter.LEFT)
 
     displayed_time = tkinter.StringVar()
@@ -146,7 +150,8 @@ def main():
     time_label.pack(side=tkinter.RIGHT)
 
     root.mainloop()
-    print('Modelling finished!')
+    print("Modelling finished!")
+
 
 if __name__ == "__main__":
     main()
